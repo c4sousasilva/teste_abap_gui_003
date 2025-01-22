@@ -10,15 +10,13 @@ FUNCTION zmf_test_0001.
   DATA: lv_maktx TYPE maktx,
         lv_matnr TYPE matnr.
 
-  SELECT matnr UP TO 1 ROWS
+  SELECT SINGLE matnr
     FROM mara
     INTO lv_matnr
-    WHERE matnr EQ iv_matnr
-   ORDER BY PRIMARY KEY.
-  ENDSELECT.
+    WHERE matnr EQ iv_matnr.
 
   IF sy-subrc NE 0.
-    RAISE error.
+    MESSAGE e345(ZWM) RAISE error.
   ENDIF.
 
 ENDFUNCTION.
